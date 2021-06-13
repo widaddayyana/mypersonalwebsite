@@ -1,0 +1,587 @@
+<html>
+<head>
+<title>EDUCATION - WIDAD DAYYANA</title>
+</head>
+<a name="top"></a>
+<body background="image/pink.png">
+
+
+<pre>
+<br>
+     <a href="index.html"><img src="image/home.png"></a>  <a href="aboutme.html"><img src="image/aboutme.png"></a>  <a href="family.html"><img src="image/family.png"></a>  <a href="education.html"><img src="image/education.png"></a>  <a href="experience.html"><img src="image/experience.png"></a>  <a href="cat.html"><img src="image/cat.png"></a>  <a href="gallery.html"><img src="image/gallery.png"></a>
+<br>
+</pre>
+
+<embed src="audio/ilu.mp3" hidden="true" loop="true"></embed>
+<img src="image/dad.png">
+<marquee scrollamount="14"><font size="6" font face="Lucida Handwriting">&#127804  WELCOME TO MY PERSONAL WEBSITE  &#127804</font></marquee>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<table width="31.5%" align="right" valign="middle" cellpadding="5" cellspacing="5">
+
+<tr align="center" bgcolor="#DAF666">
+<td><b><br>
+<br>
+<br>
+<br><font size="5" font face="bahnschrift semibold">ABOUT ME</font><br><br><img src="image/widad.png">
+<br><br><br><font size="4" font face="Bahnschrift">Widad Dayyana  |  21<br><br>Puncak Alam, Selangor
+<br><br>Malaysia<br><br>nurwidaddayyana@gmail.com<br><br><br><br><br>FOLLOW ME !
+<br><br><a href="https://www.facebook.com/widad.dayyana" target="_blank"><img src="image/fb.png"><a href="https://twitter.com/widaddayyana?s=09" target="_blank"><img src="image/twt.png"><a href="https://www.instagram.com/widaddayyana/" target="_blank"><img src="image/insta.png"></a><br><br>
+<br><br><br></font></b></td>
+</tr>
+</table>
+
+
+
+<table border="2" width="67%" align="left" valign="middle">
+<tr bgcolor="#DAF666">
+<td><b><center><font size="10" font face="bahnschrift semibold">My Education Background</font></b></td>
+</tr>
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<table border="2" width="67%" align="left" valign="middle">
+<tr bgcolor="#FDFEFE">
+<td><b><center><font size="6" font face="bahnschrift semibold">My Kindergarden</font></center></b></td>
+</tr>
+</table>
+<br>
+<br>
+<br>
+<br>
+
+<pre>
+                     <img src="image/5.jpg" border="5"> <background-color="#FDFEFE">
+</pre>
+
+<table width="67%" align="left" valign="middle">
+<tr bgcolor="#DAF666">
+<ul type="disc">
+<td><p><li align="center" style="font-size:21px">Tadika Mahkota Idaman.</p></li><br>
+<li <p align="center" style="font-size:21px">This picture when I was 5 years old.</p></li></br>
+<li <p align="center" style="font-size:21px">This was in 2005.</p></li><br>
+<li <p align="center" style="font-size:21px">This kindergarten is the back of my house.</p></li></td>
+</ul>
+</table>
+
+<table width="30%" align="right" valign="middle" cellpadding="5" cellspacing="5">
+
+<tr align="center" bgcolor="#DAF666">
+<td><b><br>
+<canvas id="canvas" width="400" height="400"
+style="background-color:#DAF666">
+</canvas>
+
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
+}
+
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
+}
+
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  ctx.font = radius*0.15 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+}
+
+function drawTime(ctx, radius){
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+</script>
+</tr>
+</table>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<pre>
+                     <img src="image/6.jpg" border="5">
+</pre>
+
+<table width="67%" align="left" valign="middle">
+<tr bgcolor="#DAF666">
+<ul type="disc">
+<td><li <p align="center" style="font-size:21px">Tadika Mahkota Idaman.</p></li><br>
+<li <p align="center" style="font-size:21px">This picture when I was 6 years old.</p></li><br>
+<li <p align="center" style="font-size:21px">This was in 2006.</p></li><br>
+<li <p align="center" style="font-size:21px">This kindergarten has moved to another area.</p></li></td>
+</ul>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<table border="2" width="67%" align="left" valign="middle">
+<tr bgcolor="#FDFEFE">
+<td><b><center><font size="6" font face="bahnschrift semibold">My Elementary School</font></b></td>
+</tr>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+
+<pre>
+                     <img src="image/10.jpg" border="5">
+</pre>
+
+<table width="67%" align="left" valign="middle">
+<tr bgcolor="#DAF666">
+<ul type="disc">
+<td><li <p align="center" style="font-size:21px">Sekolah Kebangsaan Puncak Alam.</p></li><br>
+<li <p align="center" style="font-size:21px">This picture when I was 10 years old.</p></li><br>
+<li <p align="center" style="font-size:21px">This was in 2010.</p></li><br>
+<li <p align="center" style="font-size:21px">My class name is 4 Dinamik which is the 4th class.</p></li></td>
+</ul>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<pre>
+                 <img src="image/11.jpg" border="5">
+</pre>
+
+<table width="67%" align="left" valign="middle">
+<tr bgcolor="#DAF666">
+<ul type="disc">
+<td><li <p align="center" style="font-size:21px">Sekolah Kebangsaan Puncak Alam.</p></li><br>
+<li <p align="center" style="font-size:21px">This picture when I was 11 years old.</p></li><br>
+<li <p align="center" style="font-size:21px">This was in 2011.</p></li><br>
+<li <p align="center" style="font-size:21px">My class name is 5 Cekal which is the 3th class.</p></li></td>
+</ul>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<pre>
+                     <img src="image/12.jpg" border="5">
+</pre>
+
+<table width="67%" align="left" valign="middle">
+<tr bgcolor="#DAF666">
+<ul type="disc">
+<td><li <p align="center" style="font-size:21px">Sekolah Kebangsaan Puncak Alam.</p></li><br>
+<li <p align="center" style="font-size:21px">This picture when I was 12 years old.</p></li><br>
+<li <p align="center" style="font-size:21px">This was in 2012.</p></li><br>
+<li <p align="center" style="font-size:21px">My class name is 6 Cekal which is the 3th class.</p></li><br>
+<li <p align="center" style="font-size:21px">My UPSR results is 2A 1B 2C.</p></li></td>
+</ul>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<table border="2" width="67%" align="left" valign="middle">
+<tr bgcolor="#FDFEFE">
+<td><b><center><backgournd=><font size="6" font face="bahnschrift semibold">My Secondary School</font></b></td>
+</tr>
+</table>
+<br>
+<br>
+<br>
+<br>
+
+<pre>
+                    <img src="image/13.jpg" border="5">
+</pre>
+
+<table width="67%" align="left" valign="middle">
+<tr bgcolor="#DAF666">
+<ul type="disc">
+<td> <li <p  align="center" style="font-size:21px">Sekolah Menengah Kebangsaan Puncak Alam.</p></li><br>
+<li <p align="center" style="font-size:21px">This picture when I was 13 years old.</p></li><br>
+<li <p  align="center" style="font-size:21px">This was in 2013.</p></li><br>
+<li <p  align="center" style="font-size:21px">My class name is 1 Ikhlas which is the 9th class.</p></td>
+</ul>
+</tr>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<pre>
+                     <img src="image/14.jpg" border="5">
+</pre>
+
+<table width="67%" align="left" valign="middle">
+<tr bgcolor="#DAF666">
+<ul type="disc">
+<td><li <p align="center" style="font-size:21px">Sekolah Menengah Kebangsaan Puncak Alam.</p></li><br>
+<li <p align="center" style="font-size:21px">This picture when I was 14 years old.</p></li><br>
+<li <p align="center" style="font-size:21px">This was in 2014.</p></li><br>
+<li <p align="center" style="font-size:21px">My class name is 2 Ikhlas which is the 9th class.</p></td>
+</ul>
+</tr>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<pre>
+                     <img src="image/15.jpg" border="5">
+</pre>
+
+<table width="67%" align="left" valign="middle">
+<tr bgcolor="#DAF666">
+<ul type="disc">
+<td><li <p align="center" style="font-size:21px">Sekolah Menengah Kebangsaan Puncak Alam.</p></li><br>
+<li <p align="center" style="font-size:21px">This picture when I was 15 years old.</p></li><br>
+<li <p align="center" style="font-size:21px">This was in 2015.</p></li><br>
+<li <p align="center" style="font-size:21px">My class name is 3 Efektif which is the 5th class.</p></li><br>
+<li <p align="center" style="font-size:21px">My PT3 results is 5A 1B 2C 2E.</p></li></td>
+</ul>
+</tr>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<pre>
+                    <img src="image/16.jpg" border="5">
+</pre>
+
+<table width="67%" align="left" valign="middle">
+<tr bgcolor="#DAF666">
+<ul type="disc">
+<td><li <p align="center" style="font-size:21px">Sekolah Menengah Kebangsaan Puncak Alam.</p></li><br>
+<li <p align="center" style="font-size:21px">This picture when I was 16 years old.</p></li><br>
+<li <p align="center" style="font-size:21px">This was in 2016.</p></li><br>
+<li <p align="center" style="font-size:21px">My class name is 4 Dinamik which is the 4th class.</p></li><br>
+<li <p align="center" style="font-size:21px">I got a computer science stream class.</p></li></td>
+</ul>
+</tr>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<pre>
+                     <img src="image/17.jpg" border="5">
+</pre>
+
+<table width="67%" align="left" valign="middle">
+<tr bgcolor="#DAF666">
+<ul type="disc">
+<td><li <p align="center" style="font-size:21px">Sekolah Menengah Kebangsaan Puncak Alam.</p></li><br>
+<li <p align="center" style="font-size:21px">This picture when I was 17 years old.</p></li><br>
+<li <p align="center" style="font-size:21px">This was in 2017.</p></li><br>
+<li <p align="center" style="font-size:21px">My class name is 5 Dinamik which is the 4th class.</p></li><br>
+<li <p align="center" style="font-size:21px">My SPM results is 2A- 2B 2C+ 1D 1E 1G.</p></li></td>
+</ul>
+</tr>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<table border="2" width="67%" align="left" valign="middle">
+<tr bgcolor="#FDFEFE">
+<td><b><center><font size="6" font face="bahnschrift semibold">My University</font></b></td>
+</tr>
+</table>
+
+<br>
+<br>
+<br>
+<br>
+
+<pre>
+                   <img src="image/19.jpg" border="5">
+</pre>
+
+<table width="67%" align="left" valign="middle">
+<tr bgcolor="#DAF666">
+<ul type="disc">
+<td><li <p align="center" style="font-size:21px">Universiti Teknologi MARA (UiTM), Cawangan Kedah.</p></li><br>
+<li <p align="center" style="font-size:21px">This picture when I was 19 years old.</p></li><br>
+<li <p align="center" style="font-size:21px">This was in 2019.</p></li><br>
+<li <p align="center" style="font-size:21px">My class name is KIM1101B.</p></li><br>
+<li <p align="center" style="font-size:21px">Diploma in Information Management (IM110)</p></li></td>
+</ul>
+</tr>
+</table>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<a href="#top"><img src="image/top.png"></a>
+<center><a href="https://www.freecounterstat.com" title="free website counter"><img src="https://counter6.stat.ovh/private/freecounterstat.php?c=wxke9l2bwxaqqyx9dk3np7p4q4lkdwg2" border="0" title="free website counter" alt="free website counter"></center></a>
+<br>
+<b><center><font size="3" font face="bahnschrift semibold" align="bottom">Copyright WIDAD DAYYANA. Designed by WIDAD DAYYANA</font></center></b>
+
+
+
+</body>
+</html>
